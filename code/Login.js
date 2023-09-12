@@ -24,9 +24,9 @@ import Defaults from './Defaults';
 
 // const Section = ({children, title}): Node => {
 function Login({navigation}) {
-    var firstname = useState("")
-    var lastname = useState("")
-    var email = useState("")
+    var [firstname, setFirstname] = useState("")
+    var [lastname, setLastname] = useState("")
+    var [email,setEmail] = useState("")
     const [toggleCheckBox, setToggleCheckBox] = useState(false)
     return (
         <SafeAreaView style={{ flex: 1, alignItems: 'center', justifyContent: 'space-between', backgroundColor: Defaults.backgroundColor, }}>
@@ -39,19 +39,19 @@ function Login({navigation}) {
             >
                 <TextInput
                     style={styles.Textfield}
-                    onChangeText={onChangeNumber}
+                    onChangeText={setFirstname}
                     value={firstname}
                     placeholder="first name"
                 />
                 <TextInput
                     style={styles.Textfield}
-                    onChangeText={onChangeNumber}
+                    onChangeText={setLastname}
                     value={lastname}
                     placeholder="last name"
                 />
                 <TextInput
                     style={styles.Textfield}
-                    onChangeText={onChangeNumber}
+                    onChangeText={setEmail}
                     value={email}
                     placeholder="email"
                 />
@@ -76,16 +76,14 @@ function Login({navigation}) {
                 style={{ marginTop: 15, borderRadius: 5, justifyContent: "center", alignItems: "center", marginBottom: 40, backgroundColor: 'black', color: 'white', width: Dimensions.get('window').width * 0.8, height: 48 }}
 
                 // onPress={() => Alert.alert('Button with adjusted color pressed')}
-                  onPress={() => navigation.navigate('Home')}
+                  onPress={() => navigation.navigate('Sample')}
                 underlayColor='#fff'>
 
                 <Text alignItems='center' style={{ fontFamily: 'Arial', textAlignVertical: "center", textAlign: 'center', backgroundColor: 'black', color: 'white', width: '100%' }}>Get started</Text>
             </TouchableOpacity>
         </SafeAreaView>
     );
-    function onChangeNumber() {
 
-    }
 }
 const styles = StyleSheet.create({
     Textfield: {

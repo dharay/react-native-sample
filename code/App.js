@@ -30,6 +30,7 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import Sample from './sample';
 
 /* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
  * LTI update could not be added via codemod */
@@ -44,6 +45,7 @@ function App() {
       <Stack.Navigator >
         <Stack.Screen name="Login" component={Login} options={{ headerShown: false }}/>
         <Stack.Screen name="Home" component={Home}  options={{ headerShown: false }}/>
+        <Stack.Screen name="Sample" component={Sample} />
         <Stack.Screen name="NewsDetail" component={NewsDetail}  options={{ headerShown: false }}/>
       </Stack.Navigator>
     </NavigationContainer>

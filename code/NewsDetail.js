@@ -1,22 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import {
-    Button,
-    SafeAreaView,
-    ScrollView,
     Image,
-    StatusBar,
-    StyleSheet,
+    SafeAreaView,
     Text,
-    TextInput,
-    useColorScheme,
-    View,
     TouchableOpacity,
-    ActivityIndicator,
-    Alert,
-    Dimensions,
-    FlatList,
-    KeyboardAvoidingView
+    View
 } from 'react-native';
 
 import Defaults from './Defaults';
@@ -24,7 +13,7 @@ import Defaults from './Defaults';
 
 function NewsDetail({ route, navigation }) {
     /* 2. Get the param */
-    const  article  = route.params;
+    const article = route.params;
     return (
         <SafeAreaView style={{ flex: 1, alignItems: 'center', justifyContent: 'space-between', backgroundColor: Defaults.backgroundColor, }}>
             {/* nav bar */}
@@ -52,7 +41,7 @@ function NewsDetail({ route, navigation }) {
             {/* body */}
 
             <Image>
-                
+
             </Image>
 
         </SafeAreaView>

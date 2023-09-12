@@ -1,55 +1,46 @@
-import React, { useState,useEffect } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/native';
+import React, { useEffect, useState } from 'react';
 import {
-    Button,
-    SafeAreaView,
-    ScrollView,
+    ActivityIndicator,
+    FlatList,
     Image,
-    StatusBar,
+    SafeAreaView,
     StyleSheet,
     Text,
     TextInput,
-    useColorScheme,
-    View,
     TouchableOpacity,
-    ActivityIndicator,
-    Alert,
-    Dimensions,
-    FlatList,
-    KeyboardAvoidingView
+    View
 } from 'react-native';
 
 import Defaults from './Defaults';
 
-function Home({navigation}) {
+function Home({ navigation }) {
     var search = useState("")
     const [isLoading, setLoading] = useState(true);
     const [data, setData] = useState([]);
     var requestOptions = {
         method: 'GET',
         redirect: 'follow'
-      };
-      
-      const getMovies = async () => {
+    };
+
+    const getMovies = async () => {
         try {
-        //  const response = await fetch('https://newsapi.org/v2/top-headlines?country=in&apiKey=fd91f23fd33f4e8da11d913561f85599');
-        //  const json = await response.json();
-        const json = jsonLocal
-         setData(json.articles);
-         console.log(json.articles)
-       } catch (error) {
-         console.error(error);
-       } finally {
-         setLoading(false);
-       }
-     }
-   
+            //  const response = await fetch('https://newsapi.org/v2/top-headlines?country=in&apiKey=fd91f23fd33f4e8da11d913561f85599');
+            //  const json = await response.json();
+            const json = jsonLocal
+            setData(json.articles);
+            console.log(json.articles)
+        } catch (error) {
+            console.error(error);
+        } finally {
+            setLoading(false);
+        }
+    }
+
     useEffect(() => {
-        getMovies(); 
-      }, []);
-    
+        getMovies();
+    }, []);
+
     return (
         <SafeAreaView style={{ flex: 1, alignItems: 'flex-start', justifyContent: 'flex-start', backgroundColor: Defaults.backgroundColor }}>
 
@@ -91,20 +82,20 @@ function Home({navigation}) {
                     <Text>Sports</Text>
                 </TouchableOpacity>
             </View>
-            {isLoading ? <ActivityIndicator style={{alignSelf:'center'}}/> : (
-            <FlatList style={{flexGrow : 2, width:'100%', alignContent:'center',}}
-            // data = {data} 
-            data={data} 
-            keyExtractor={({ id }, index) => id}
-            renderItem={({ item }) => (
-              <Card article={item} >
+            {isLoading ? <ActivityIndicator style={{ alignSelf: 'center' }} /> : (
+                <FlatList style={{ flexGrow: 2, width: '100%', alignContent: 'center', }}
+                    // data = {data} 
+                    data={data}
+                    keyExtractor={({ id }, index) => id}
+                    renderItem={({ item }) => (
+                        <Card article={item} >
 
-                </Card> 
+                        </Card>
+                    )}
+                >
+
+                </FlatList>
             )}
-            >
-               
-            </FlatList>
-)}
         </SafeAreaView >
     )
     function onSearch() {
@@ -114,20 +105,20 @@ function Home({navigation}) {
 
 function Card({
     article
-  }){
+}) {
     const navigation = useNavigation();
-    return(
-        <TouchableOpacity style={styles.CardBox} onPress={() => navigation.navigate('NewsDetail',{article})}>
+    return (
+        <TouchableOpacity style={styles.CardBox} onPress={() => navigation.navigate('NewsDetail', { article })}>
             <View flexDirection='row'>
                 <View width='45%'>
-                <Text numberOfLines={3} style = {{height:'45%', fontSize:15}}>{article.title}</Text>
-            <Text numberOfLines={5} style = {{height:'45%',fontSize:11,numberOfLines:3}}>{article.description}</Text>
+                    <Text numberOfLines={3} style={{ height: '45%', fontSize: 15 }}>{article.title}</Text>
+                    <Text numberOfLines={5} style={{ height: '45%', fontSize: 11, numberOfLines: 3 }}>{article.description}</Text>
                 </View>
-                <Image source={{uri: article.urlToImage}}
-       style={{width: '45%', height: '90%',marginLeft:20}} />
+                <Image source={{ uri: article.urlToImage }}
+                    style={{ width: '45%', height: '90%', marginLeft: 20 }} />
             </View>
-            
-            
+
+
         </TouchableOpacity>
     )
 }
@@ -144,29 +135,29 @@ const styles = StyleSheet.create({
         borderColor: 'gray',
         alignSelf: 'center'
     },
-    CardBox:{
-        alignSelf:'center',
+    CardBox: {
+        alignSelf: 'center',
         margin: 8,
-        padding:15,
+        padding: 15,
         width: '90%',
         height: 200,
         justifyContent: "center",
         alignItems: "flex-start",
         borderStyle: 'solid',
-        borderWidth:0,
+        borderWidth: 0,
         borderTopColor: 'black',
-        borderBottomEndRadius : 8,
+        borderBottomEndRadius: 8,
         borderTopStartRadius: 8,
         borderTopEndRadius: 8,
         borderBottomStartRadius: 8,
-        borderBottomLeftRadius:8,
-        borderBottomRightRadius:8,
+        borderBottomLeftRadius: 8,
+        borderBottomRightRadius: 8,
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 0 },
         shadowOpacity: 0.5,
         shadowRadius: 5,
         elevation: 5,
-        backgroundColor:'#F6EBDB',
+        backgroundColor: '#F6EBDB',
     },
 
 });
