@@ -30,7 +30,10 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-import Sample from './sample';
+import Sample from './PromiseSample';
+import Sample2 from './Sample2';
+import CounterApp from './ReduxCounter';
+import SagaApp from './SagaReduxCounter';
 
 /* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
  * LTI update could not be added via codemod */
@@ -42,10 +45,13 @@ const Stack = createNativeStackNavigator();
 function App() {
   return (
     <NavigationContainer style={styles.defaultColor}>
-      <Stack.Navigator >
+      <Stack.Navigator initialRouteName='SagaCounter' >
         <Stack.Screen name="Login" component={Login} options={{ headerShown: false }}/>
         <Stack.Screen name="Home" component={Home}  options={{ headerShown: false }}/>
         <Stack.Screen name="Sample" component={Sample} />
+        <Stack.Screen name="Sample2" component={Sample2} />
+        <Stack.Screen name="Counter" component={CounterApp} />
+        <Stack.Screen name="SagaCounter" component={SagaApp} />
         <Stack.Screen name="NewsDetail" component={NewsDetail}  options={{ headerShown: false }}/>
       </Stack.Navigator>
     </NavigationContainer>
